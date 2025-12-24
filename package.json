@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "build": "esbuild src/content.ts src/background.ts src/block.ts --bundle --outdir=dist --format=esm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.1.32",
+    "esbuild": "^0.27.2",
     "typescript": "^5.9.3"
   }
 }
