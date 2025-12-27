@@ -186,7 +186,7 @@ if (isGoogleSearch() || isBingSearch()) {
 // DB → RULES → (AI later) → DB
 // ------------------------------------------------------------
 (async function () {
-  // Skip DB checks for search engines
+  // Skip for search engines (they're always safe)
   if (isGoogleSearch() || isBingSearch()) {
     return;
   }
@@ -194,21 +194,23 @@ if (isGoogleSearch() || isBingSearch()) {
   const domain: string = normalizeDomain(location.href);
   if (!domain) return;
 
-  // 1️⃣ DB OVERRIDE
+  // 1️⃣ DB CHECK - if already known, trust it
   const stored: string | null = await getDomainStatus(domain);
 
   if (stored === "SAFE") {
+    // Already verified as safe, nothing to do
     return;
   }
 
   if (stored === "BLOCK") {
+    // Already blocked, redirect
     redirectToBlock("This site is blocked (DB override).");
     return;
   }
 
-  // 2️⃣ UNKNOWN DOMAIN → RULE CHECKS
+  // 2️⃣ UNKNOWN DOMAIN → RUN ALL CHECKS
 
-  // --- URL CHECK ---
+  // --- URL CHECK (immediate) ---
   const url = location.href;
   if (matchesKeywords(url)) {
     await setDomainStatus(domain, "BLOCK");
@@ -223,16 +225,19 @@ if (isGoogleSearch() || isBingSearch()) {
     return;
   }
 
-  // --- DOM CHECK ---
-  window.addEventListener("DOMContentLoaded", async () => {
+  // --- DOM CHECK (after page loads) ---
+  async function checkPageContent() {
     const title: string = document.title || "";
     const metaDesc: string =
       (document.querySelector('meta[name="description"]') as HTMLMetaElement | null)?.content ??
       "";
     const bodyText: string = document.body?.innerText?.slice(0, 4000) ?? "";
 
+    console.log(`[Web Guardian] Checking content for domain: ${domain}`);
+
     // Simple keyword check first
     if (matchesKeywords(title) || matchesKeywords(bodyText)) {
+      console.log(`[Web Guardian] BLOCKED - Keywords found in title/body`);
       await setDomainStatus(domain, "BLOCK");
       redirectToBlock("This page looks like restricted content.");
       return;
@@ -243,12 +248,23 @@ if (isGoogleSearch() || isBingSearch()) {
     const bodyResult: RuleResult = ruleCheck(combined);
 
     if (bodyResult === "BLOCK") {
+      console.log(`[Web Guardian] BLOCKED - Rule engine triggered`);
       await setDomainStatus(domain, "BLOCK");
       redirectToBlock("This page looks like restricted content (title/body).");
       return;
     }
 
-    // 3️⃣ SAFE fallback (AI will refine later)
+    // 3️⃣ ALL CHECKS PASSED → SAVE AS SAFE
+    console.log(`[Web Guardian] ✅ Domain "${domain}" verified as SAFE - saving to DB`);
     await setDomainStatus(domain, "SAFE");
-  });
+    console.log(`[Web Guardian] ✅ Save complete`);
+  }
+
+  // Run check when DOM is ready
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", checkPageContent);
+  } else {
+    // DOM already loaded, run immediately
+    checkPageContent();
+  }
 })();

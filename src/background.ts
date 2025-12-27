@@ -65,7 +65,7 @@ chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
   if (isSearchUrl(url)) {
     const query = getSearchQuery(url);
     if (query && matchesKeywords(query)) {
-      // Redirect to block page immediately
+      // Redirect to block page immediately (don't save search engine domain)
       const blockUrl = chrome.runtime.getURL(
         `block.html?reason=${encodeURIComponent(
           `Blocked search query: "${query}"`
@@ -74,6 +74,24 @@ chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
       chrome.tabs.update(details.tabId, { url: blockUrl });
       return;
     }
+    // Allow search engines themselves
+    return;
+  }
+
+  // Check if URL itself matches keywords (for direct navigation to sites)
+  if (matchesKeywords(url)) {
+    const domain = normalizeDomain(url);
+    if (domain) {
+      // Save to DB before blocking
+      await setDomainStatus(domain, "BLOCK");
+    }
+    const blockUrl = chrome.runtime.getURL(
+      `block.html?reason=${encodeURIComponent(
+        "This site matches restricted keywords."
+      )}&url=${encodeURIComponent(url)}`
+    );
+    chrome.tabs.update(details.tabId, { url: blockUrl });
+    return;
   }
 
   // Check database for known blocked domains
