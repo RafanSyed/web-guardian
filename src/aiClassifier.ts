@@ -4,7 +4,7 @@ const AI_SERVER_URL = "https://motionless-andriana-webguardian-acdbcfa6.koyeb.ap
 //just checking if this auto deploys 
 
 export type AIResult = "SAFE" | "BLOCK" | "UNKNOWN";
-
+//test
 // Classify a search query using AI
 export async function classifySearchQuery(query: string): Promise<AIResult> {
   try {
