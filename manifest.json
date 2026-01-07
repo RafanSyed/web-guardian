@@ -3,22 +3,16 @@
   "name": "Web Guardian",
   "version": "1.0.0",
   "description": "Blocks manga, anime, and unsafe content",
-
   "permissions": ["tabs", "storage", "webNavigation"],
-  "host_permissions": [
-    "https://motionless-andriana-webguardian-acdbcfa6.koyeb.app/*"
-  ],
-
+  "host_permissions": ["https://motionless-andriana-webguardian-acdbcfa6.koyeb.app/*"],
   "background": {
     "service_worker": "dist/background.js",
     "type": "module"
   },
-
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["dist/content.js"],
-      "type": "module"
+      "js": ["dist/content.js"]
     }
   ]
 }
