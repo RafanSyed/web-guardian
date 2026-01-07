@@ -7,7 +7,8 @@ import "dotenv/config";
 
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 
 // Initialize OpenAI with your API key
 const openai = new OpenAI({
@@ -308,7 +309,6 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", message: "AI classification server running" });
 });
 
-app.listen(PORT, () => {
-  console.log(`🤖 AI Classification Server running on http://localhost:${PORT}`);
-  console.log(`Ready to classify searches and websites!`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🤖 AI Classification Server running on port ${PORT}`);
 });
