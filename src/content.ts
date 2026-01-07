@@ -58,7 +58,7 @@ const INTENT_WORDS: string[] = [
   "chapters",
   "online",
   "free",
-  "raw",
+  // "raw",
   "translated",
   "scan",
   "scans",

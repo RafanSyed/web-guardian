@@ -197,6 +197,12 @@ Triggering examples:
 “Latest chapter of ___”
 “Viewer / Scan / Reader”
 
+Allowed Search Engines:
+- Google Search (google.com/search)
+- Bing Search (bing.com/search)
+
+All others must be blocked.
+
 --------------------------------------------------------
 FINAL INSTRUCTIONS
 --------------------------------------------------------
