@@ -5,7 +5,9 @@
   "description": "Blocks manga, anime, and unsafe content",
 
   "permissions": ["tabs", "storage", "webNavigation"],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "https://motionless-andriana-webguardian-acdbcfa6.koyeb.app/*"
+  ],
 
   "background": {
     "service_worker": "dist/background.js",
