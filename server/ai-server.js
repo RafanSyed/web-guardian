@@ -67,7 +67,7 @@ If lastSearchQuery is included:
 - Treat it as WEAK CONTEXT ONLY.
 - Never classify a website as BLOCK solely due to lastSearchQuery.
 - Only use it to reinforce a decision when the domain/url/title already shows manga/reading/adult evidence.
-
+ 
 ========================================================
 BLOCK IF ANY OF THESE ARE TRUE
 ========================================================
