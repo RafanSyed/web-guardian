@@ -1,6 +1,7 @@
 // aiClassifier.ts — Communication layer between extension and AI server
 
 const AI_SERVER_URL = "https://motionless-andriana-webguardian-acdbcfa6.koyeb.app";
+// const AI_SERVER_URL = "http://localhost:3000";
 //just checking if this auto deploys 
 
 export type AIResult = "SAFE" | "BLOCK" | "UNKNOWN";

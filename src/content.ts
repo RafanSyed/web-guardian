@@ -256,7 +256,9 @@ if (isGoogleSearch() || isBingSearch()) {
 
     // 3️⃣ ALL CHECKS PASSED → SAVE AS SAFE
     console.log(`[Web Guardian] ✅ Domain "${domain}" verified as SAFE - saving to DB`);
-    await setDomainStatus(domain, "SAFE");
+    if (domain !== "youtube.com") {
+      await setDomainStatus(domain, "SAFE");
+    }
     console.log(`[Web Guardian] ✅ Save complete`);
   }
 
