@@ -40,6 +40,18 @@ If the input starts with "[YOUTUBE_SEARCH]":
 - Block searches for romantic/erotic stories, fanfiction, or adult comics on YouTube, even jealously and cute moments between couples, (ex, kdrama love scenes, jealous gf prank, proposals, couple vlogs and pranks).
 Return only BLOCK or SAFE.
 
+========================================================
+AI Chat Agents
+========================================================
+If the website is AI related then BlOCK unless it is a well-known safe site (openai.com, chatgpt, bard, etc.)
+Websites that are safe for AI tools:
+- openai.com
+- chat.openai.com
+- bard.google.com
+- claude.ai
+- microsoft.com/ai
+- ai.google.com
+
 
 ========================================================
 CRITICAL SCOPE RULE (PREVENTS FALSE POSITIVES)
@@ -91,6 +103,8 @@ BLOCK IF ANY OF THESE ARE TRUE
 • The input resembles ANY adult manhwa title — even partially or misspelled.
 • The input matches ANY adult-manhwa relationship trope.
 • The input contains ANY storyline structure similar to adult webtoon plots.
+• The input contains ANY known adult manhwa title — even partially or misspelled.
+• The input that contains novel or story telling generating, stuff like novelAi, or talefy.ai, etc.
 
 IMPORTANT PATCH:
 - Do NOT block based ONLY on “narrative/story title vibes” unless there is ALSO a manga/reading/adult indicator
