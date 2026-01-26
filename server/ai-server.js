@@ -76,6 +76,9 @@ BLOCK any site or query mentioning:
 - Chai AI
 - CrushOn AI
 - Poe bots used for roleplay or romance
+- Talefy.ai
+- undetectable.ai
+
 
 BLOCK if domain ends in:
 - .ai
