@@ -73,6 +73,7 @@ BLOCK keywords and phrases including:
 - ai chat for romance
 - ai video generator 
 - ai image generator for stories
+- for the above rules for AI, this also appliesto search queries saying Artificial intelligence or AI.
 
 BLOCK any site or query mentioning:
 - NovelAI
