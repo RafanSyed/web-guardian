@@ -82,7 +82,19 @@ story generator, novel generator, fiction generator, write a story,
 fanfiction generator, love story generator,
 interactive story, choose your story, visual novel online,
 girlfriend simulator, boyfriend simulator, dating simulator,
-virtual companion, emotional support ai, comfort ai
+virtual companion, emotional support ai, comfort ai,
+book generator, ebook generator, write a book, make a book, create a book,
+write books, make whole books, generate books, generate a book,
+ai book generator, artificial intelligence book generator, artifical intelligence book,
+ai book writer, ai writer book, ai novel writer, ai ebook writer,
+free book generator, write a book for free, make books free online
+
+RULE: BLOCK AI + BOOK CREATION
+If the input includes "ai" OR "artificial intelligence" (including misspellings)
+AND includes any of: book, ebook, novel, chapter, fiction, writing, author, publish
+THEN classify as BLOCK.
+This applies even if "generator" is not present.
+
 
 --------------------------------------------------------
 BLOCK AI MEDIA GENERATORS (HUMAN-FOCUSED)
@@ -108,6 +120,18 @@ regardless of stated purpose.
 --------------------------------------------------------
 BLOCK SPECIFIC AI / STORY PLATFORMS
 --------------------------------------------------------
+
+NORMALIZATION RULE (CRITICAL):
+Treat the following as equivalent to "AI" and "Artificial Intelligence":
+- artificial intelligence
+- artifical intelligence
+- artific ial intelligence
+- artificl intelligence
+- ai (any capitalization)
+
+Also treat common typos of "generator" and "generative" as equivalent.
+If the intent is clear, DO NOT require exact spelling.
+
 
 BLOCK any site or query mentioning:
 
