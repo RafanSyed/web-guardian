@@ -41,6 +41,10 @@ If the input starts with "[YOUTUBE_SEARCH]":
 - Be stricter than normal browsing.
 - If slang is ambiguous but commonly sexualized → BLOCK.
 - Do NOT block normal educational, medical, sports, or tech searches unless sexual intent is implied.
+- block manga or reading-related searches as per normal rules.
+- block any search clearly seeking adult or sexual content.
+- block gym bait from fitness searches, from women.
+
 
 Return only BLOCK or SAFE.
 
@@ -63,6 +67,12 @@ BLOCK keywords and phrases including:
 - story generator ai, novel ai, fiction generator, write a story ai
 - interactive story, choose your story, visual novel online
 - fanfiction ai, romance generator, love story generator
+- emotional ai, companionship ai
+- thirst trap ai, sexy ai, intimate ai
+- ai for flirting, ai for dating, ai relationship
+- ai chat for romance
+- ai video generator 
+- ai image generator for stories
 
 BLOCK any site or query mentioning:
 - NovelAI
