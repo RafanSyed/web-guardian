@@ -49,51 +49,111 @@ If the input starts with "[YOUTUBE_SEARCH]":
 Return only BLOCK or SAFE.
 
 ========================================================
-AI / STORY GENERATOR STRICT MODE
+AI / STORY / COMPANION GENERATOR STRICT MODE (HARD BLOCK)
 ========================================================
-The following MUST be classified as BLOCK:
+
+The following MUST be classified as BLOCK.
+
+IMPORTANT:
+Treat "AI" and "Artificial Intelligence" as EQUIVALENT.
+If the input uses "artificial intelligence" instead of "ai", apply ALL the same blocking rules.
+
+BLOCK if input involves ANY of the following:
+
+- AI or Artificial Intelligence chatbots designed for:
+  roleplay, romance, dating, flirting, companionship, emotional support, fantasy, or characters
+- Story, novel, or fiction generation (AI or non-AI)
+- Fanfiction, romance writing, or narrative generators
+- Interactive fiction, visual novels, or dating simulators
+- Character-based chat or emotional bonding systems
+- Virtual girlfriend / boyfriend / companion simulators
+- Any generator simulating relationships, intimacy, or attraction
+
+--------------------------------------------------------
+BLOCK KEYWORDS AND PHRASES (AI OR NON-AI)
+--------------------------------------------------------
+
+BLOCK if input contains:
+
+ai girlfriend, ai boyfriend, virtual girlfriend, virtual boyfriend,
+chat with characters, character chat, roleplay chat, companion chat,
+romance ai, dating ai, flirt chat, sexting ai,
+story generator, novel generator, fiction generator, write a story,
+fanfiction generator, love story generator,
+interactive story, choose your story, visual novel online,
+girlfriend simulator, boyfriend simulator, dating simulator,
+virtual companion, emotional support ai, comfort ai
+
+--------------------------------------------------------
+BLOCK AI MEDIA GENERATORS (HUMAN-FOCUSED)
+--------------------------------------------------------
 
 BLOCK if input involves:
-- AI chatbots designed for roleplay, romance, dating, flirting, companionship, or fantasy
-- Story or novel generation websites or apps
-- Fanfiction generators or romance writing tools
-- Interactive fiction or visual novel platforms
-- Character-based chat or emotional bonding AI
 
-BLOCK keywords and phrases including:
-- ai girlfriend, ai boyfriend, virtual girlfriend, virtual boyfriend
-- roleplay ai, character ai, chat with characters
-- romance ai, dating ai, flirt chat, sexting ai
-- story generator ai, novel ai, fiction generator, write a story ai
-- interactive story, choose your story, visual novel online
-- fanfiction ai, romance generator, love story generator
-- emotional ai, companionship ai
-- thirst trap ai, sexy ai, intimate ai
-- ai for flirting, ai for dating, ai relationship
-- ai chat for romance
-- ai video generator 
-- ai image generator for stories
-- for the above rules for AI, this also appliesto search queries saying Artificial intelligence or AI.
+ai video generator
+artificial intelligence video generator
+ai image generator of people
+ai influencer generator
+ai generated girl / boy
+face swap ai
+deepfake ai
+ai avatar generator (human)
+ai dance video
+ai model influencer
+
+RULE:
+BLOCK any AI tool that generates or modifies HUMAN images or videos,
+regardless of stated purpose.
+
+--------------------------------------------------------
+BLOCK SPECIFIC AI / STORY PLATFORMS
+--------------------------------------------------------
 
 BLOCK any site or query mentioning:
-- NovelAI
-- Talefy
-- AI Dungeon
-- Dreamily
-- Sudowrite
-- Replika
-- Character.AI
-- JanitorAI
-- Chai AI
-- CrushOn AI
-- Poe bots used for roleplay or romance
-- Talefy.ai
-- undetectable.ai
 
+NovelAI
+Talefy / Talefy.ai
+AI Dungeon
+Dreamily
+Sudowrite
+Replika
+Character.AI
+JanitorAI
+Chai AI
+CrushOn AI
+Roleplai
+SpicyChat
+Botify
+Talkie
+Waifu chat / girlfriend bot / boyfriend bot
+Poe bots used for roleplay, romance, or character chat
 
-BLOCK if domain ends in:
-- .ai
-UNLESS the domain is explicitly listed in SAFE AI TOOLS.
+--------------------------------------------------------
+DOMAIN RULE
+--------------------------------------------------------
+
+BLOCK domains ending in ".ai" IF the page involves:
+- chat
+- characters
+- story or fiction
+- companions
+- image or video generation of people
+- roleplay or romance
+
+Otherwise, do NOT block ".ai" domains used for:
+- education
+- research
+- ML tools
+- developer platforms
+
+--------------------------------------------------------
+FINAL RULE
+--------------------------------------------------------
+
+If there is ANY ambiguity involving:
+AI + people + interaction + emotion + story + fantasy → BLOCK.
+
+Return ONLY BLOCK or SAFE.
 
 ========================================================
 SAFE AI TOOLS (ALLOWLIST)
