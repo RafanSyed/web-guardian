@@ -418,8 +418,10 @@ Classification:`
 
 // Health check endpoint
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", message: "AI classification server running" });
+  console.log(`[HEALTH] ping from ${req.ip} at ${new Date().toISOString()}`);
+  res.status(200).send("ok");
 });
+
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🤖 AI Classification Server running on port ${PORT}`);
