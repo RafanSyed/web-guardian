@@ -49,6 +49,78 @@ If the input starts with "[YOUTUBE_SEARCH]":
 Return only BLOCK or SAFE.
 
 ========================================================
+UNRESTRICTED / NO LIMITS CONTENT GENERATORS (HARD BLOCK)
+========================================================
+
+BLOCK if input contains ANY reference to unrestricted, unfiltered, or uncensored content generation:
+
+BLOCK PHRASES:
+- no restrictions
+- no restriction
+- unrestricted
+- unfiltered
+- uncensored
+- no limits
+- no filter
+- no censorship
+- nsfw generator
+- nsfw allowed
+- bypass filter
+- without filter
+- remove restrictions
+- jailbreak
+
+NORMALIZATION (CRITICAL):
+Treat partial matches and abbreviations as equivalent:
+- "no res" = "no restrictions"
+- "unres" = "unrestricted"
+- "no rest" = "no restrictions"
+- "unrestr" = "unrestricted"
+- "uncens" = "uncensored"
+- "no lim" = "no limits"
+
+If the context involves content generation AND any phrase suggesting lack of restrictions → BLOCK.
+
+========================================================
+CONTENT GENERATOR STRICT BLOCKING
+========================================================
+
+BLOCK if input involves content generators combined with:
+- Human-focused output (people, faces, bodies, influencers)
+- Story/narrative creation
+- Image generation of people
+- Video generation of people
+- Chatbot/character creation
+- Any implication of adult or unrestricted content
+
+BLOCK KEYWORDS:
+- text to image generator
+- text to video generator
+- text generator
+- image generator
+- video generator
+- content generator
+- ai generator
+- generate images
+- generate videos
+- generate content
+- create images ai
+- create videos ai
+- make images ai
+- make videos ai
+- text generator (when paired with story/fiction/chat context)
+- prompt generator (when paired with image/video/story context)
+
+EXCEPTION:
+DO NOT block if clearly business/work-related:
+- "invoice generator"
+- "qr code generator"
+- "password generator"
+- "lorem ipsum generator"
+- "report generator"
+- "data generator" (developer tools)
+
+========================================================
 AI / STORY / COMPANION GENERATOR STRICT MODE (HARD BLOCK)
 ========================================================
 
@@ -87,7 +159,11 @@ book generator, ebook generator, write a book, make a book, create a book,
 write books, make whole books, generate books, generate a book,
 ai book generator, artificial intelligence book generator, artifical intelligence book,
 ai book writer, ai writer book, ai novel writer, ai ebook writer,
-free book generator, write a book for free, make books free online
+free book generator, write a book for free, make books free online,
+text to image generator, text to video generator, image generator people,
+video generator people, ai image generator, ai video generator,
+generate images no restrictions, generate videos no filter,
+unrestricted ai generator, uncensored generator, nsfw generator
 
 RULE: BLOCK AI + BOOK CREATION
 If the input includes "ai" OR "artificial intelligence" (including misspellings)
@@ -95,6 +171,10 @@ AND includes any of: book, ebook, novel, chapter, fiction, writing, author, publ
 THEN classify as BLOCK.
 This applies even if "generator" is not present.
 
+RULE: BLOCK GENERATOR + UNRESTRICTED
+If the input includes "generator" OR "generate" OR "create" OR "make"
+AND includes any of: no restrictions, unrestricted, unfiltered, uncensored, no limits, nsfw, no filter
+THEN classify as BLOCK.
 
 --------------------------------------------------------
 BLOCK AI MEDIA GENERATORS (HUMAN-FOCUSED)
@@ -105,6 +185,9 @@ BLOCK if input involves:
 ai video generator
 artificial intelligence video generator
 ai image generator of people
+ai image generator people
+text to image people
+text to video people
 ai influencer generator
 ai generated girl / boy
 face swap ai
@@ -112,6 +195,10 @@ deepfake ai
 ai avatar generator (human)
 ai dance video
 ai model influencer
+generate human images
+create human videos
+make ai people
+ai person generator
 
 RULE:
 BLOCK any AI tool that generates or modifies HUMAN images or videos,
@@ -145,12 +232,17 @@ Character.AI
 JanitorAI
 Chai AI
 CrushOn AI
+Toolbaz
 Roleplai
 SpicyChat
 Botify
 Talkie
 Waifu chat / girlfriend bot / boyfriend bot
 Poe bots used for roleplay, romance, or character chat
+Stable Diffusion (when used for people generation)
+Midjourney (when used for people generation)
+DALL-E (when used for people generation)
+Any image/video generator marketed as "unrestricted" or "uncensored"
 
 --------------------------------------------------------
 DOMAIN RULE
@@ -163,6 +255,8 @@ BLOCK domains ending in ".ai" IF the page involves:
 - companions
 - image or video generation of people
 - roleplay or romance
+- unrestricted content
+- no filter content
 
 Otherwise, do NOT block ".ai" domains used for:
 - education
@@ -176,6 +270,8 @@ FINAL RULE
 
 If there is ANY ambiguity involving:
 AI + people + interaction + emotion + story + fantasy → BLOCK.
+Generator + unrestricted/unfiltered/uncensored → BLOCK.
+Content generation + human images/videos → BLOCK.
 
 Return ONLY BLOCK or SAFE.
 
@@ -199,7 +295,7 @@ CRITICAL SCOPE RULE (PREVENTS FALSE POSITIVES)
 Some inputs are SEARCH-related (search query text, search results page titles/snippets/urls).
 Some inputs are NORMAL WEBSITE visits (company sites, job boards, docs, schools, finance, etc.).
 
-The “Allowed Search Engines” rule applies ONLY to:
+The "Allowed Search Engines" rule applies ONLY to:
 - Search queries
 - Search engine results pages (SERPs)
 It does NOT apply to normal websites.
@@ -229,6 +325,8 @@ Evaluate ALL of the following when present:
 8. Relationship tropes
 9. East Asian title formatting patterns
 10. Emotional or narrative phrasing similar to adult stories
+11. Generator-related terms with unrestricted/unfiltered language
+12. Text-to-image or text-to-video generation contexts
 
 If lastSearchQuery is included:
 - Treat as WEAK CONTEXT ONLY.
@@ -248,6 +346,9 @@ BLOCK IF ANY OF THESE ARE TRUE
 • Pornographic or sexually suggestive themes
 • AI tools not in SAFE AI TOOLS
 • Website ends in .ai unless allowlisted
+• Content generators with "no restrictions", "unfiltered", "uncensored" language
+• Text-to-image or text-to-video generators focused on people
+• Image/video generators marketed without content filters
 
 IMPORTANT PATCH:
 Do NOT block based ONLY on story-like wording unless paired with manga/reading or adult indicators.
@@ -270,7 +371,10 @@ KEYWORD TRIGGERS
 ========================================================
 Block if query includes:
 manga, manhwa, webtoon, manhua, toon, raw, scan, scanlation, chapter, episode,
-reader, read online, NSFW, hentai, ecchi, lewd, 18+, uncensored
+reader, read online, NSFW, hentai, ecchi, lewd, 18+, uncensored,
+no restrictions, unrestricted, unfiltered, no filter, no limits,
+text to image, text to video, image generator, video generator,
+generate images, generate videos, ai generator, content generator
 
 ========================================================
 KNOWN ADULT MANHWA (BLOCK ALL VARIATIONS)
@@ -281,8 +385,8 @@ Perfect Half
 A Wonderful New World
 My High School Bully
 My Landlady
-My Daughter’s Friend
-My Mom’s Friend
+My Daughter's Friend
+My Mom's Friend
 Stepmother Friends
 Convenience Store
 New Town / New Town Gym
@@ -297,17 +401,17 @@ Switch
 Love Parameter
 Drug Candy
 Excuse Me, This Is My Room
-Hahri’s Lumps
+Hahri's Lumps
 Perfect Body
 Reset
-My Wife’s Friend
+My Wife's Friend
 Close As Neighbors
 The Taste of the Woman Next Door
 Campus Belle
 Wet Office
 Anything For You
 The Last Room
-A Pervert’s Daily Life
+A Pervert's Daily Life
 
 ========================================================
 SEARCH ENGINE RULE (SEARCH ONLY)
@@ -332,7 +436,6 @@ No reasoning.
 No extra text.
 
 If there is ANY DOUBT → BLOCK.
-
 `;
 
 // Classify search query
