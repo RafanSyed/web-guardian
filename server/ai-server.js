@@ -290,6 +290,251 @@ ONLY the following AI-related domains are allowed:
 ALL other AI-related websites or tools must be BLOCKED.
 
 ========================================================
+AI API BLOCKING - ALLOWLIST ONLY
+========================================================
+You are blocking ALL AI/LLM API providers except the three
+approved ones. This is a HARD ALLOWLIST. If it is an AI API
+and NOT on the approved list → BLOCK. No exceptions.
+
+APPROVED AI APIS (SAFE - never block these):
+- openai.com
+- platform.openai.com
+- chat.openai.com
+- api.openai.com
+- anthropic.com
+- console.anthropic.com
+- claude.ai
+- api.anthropic.com
+- gemini.google.com
+- aistudio.google.com
+- makersuite.google.com
+- generativelanguage.googleapis.com
+- ai.google.dev
+
+========================================================
+HARD BLOCK LIST - AI API PROVIDERS
+========================================================
+Block any visit, search, or API key retrieval from:
+
+LLM APIS:
+- groq.com
+- console.groq.com
+- api.groq.com
+- openrouter.ai
+- openrouter.io
+- api.openrouter.ai
+- together.ai
+- togetherai.com
+- api.together.xyz
+- replicate.com
+- api.replicate.com
+- deepinfra.com
+- api.deepinfra.com
+- mistral.ai
+- api.mistral.ai
+- console.mistral.ai
+- fireworks.ai
+- api.fireworks.ai
+- app.fireworks.ai
+- anyscale.com
+- api.anyscale.com
+- endpoints.anyscale.com
+- lepton.ai
+- api.lepton.ai
+- deepseek.com
+- api.deepseek.com
+- platform.deepseek.com
+- cohere.com
+- api.cohere.com
+- dashboard.cohere.com
+- ai21.com
+- api.ai21.com
+- studio.ai21.com
+- nlpcloud.com
+- api.nlpcloud.io
+- forefront.ai
+- api.forefront.ai
+- goose.ai
+- api.goose.ai
+- textsynth.com
+- api.textsynth.com
+- alephalpha.com
+- api.aleph-alpha.com
+- writer.com (ai features)
+- api.writer.com
+- banana.dev
+- api.banana.dev
+- baseten.co
+- app.baseten.co
+- modal.com (when used for LLM)
+- perplexity.ai
+- api.perplexity.ai
+- novita.ai
+- api.novita.ai
+- hyperbolic.xyz
+- app.hyperbolic.xyz
+- api.hyperbolic.xyz
+- cerebras.ai
+- inference.cerebras.ai
+- sambanova.ai
+- api.sambanova.ai
+- octoai.cloud
+- text.octoai.run
+- cloudflare.com/workers-ai
+- workers.ai
+
+HUGGING FACE (block AI inference only):
+- huggingface.co/inference-api
+- api-inference.huggingface.co
+- huggingface.co/models (when searching for LLM models)
+- huggingface.co/spaces (when used for text generation)
+
+========================================================
+BLOCK KEYWORDS - SEARCHES
+========================================================
+Block if search contains ANY of these:
+
+GENERAL LLM API SEARCHES:
+- "free llm api"
+- "free llm api key"
+- "free ai api"
+- "free ai api key"
+- "free text generation api"
+- "free ai text generator api"
+- "free open source llm api"
+- "best free llm api"
+- "best free ai api 2024"
+- "best free ai api 2025"
+- "uncensored ai api"
+- "uncensored llm api"
+- "nsfw ai api"
+- "nsfw llm api"
+- "no restrictions ai api"
+- "unrestricted ai api"
+- "ai api no filter"
+- "ai api without restrictions"
+- "ai api for adult content"
+- "ai api for stories"
+- "ai story generation api"
+- "ai writing api free"
+- "llm api free tier"
+- "free gpt api alternative"
+- "chatgpt alternative api free"
+- "openai alternative free api"
+- "open source ai api key"
+
+SPECIFIC PROVIDER SEARCHES:
+- "groq api key"
+- "groq free api"
+- "groq llama api"
+- "openrouter api key"
+- "openrouter free models"
+- "together ai api key"
+- "replicate api key"
+- "mistral api key"
+- "mistral free api"
+- "cohere api key"
+- "cohere free tier"
+- "deepinfra api"
+- "deepseek api key"
+- "deepseek free api"
+- "fireworks ai api"
+- "perplexity api key"
+- "cerebras api key"
+- "hyperbolic api key"
+- "novita ai api"
+
+MODEL SPECIFIC SEARCHES:
+- "llama api free"
+- "llama 3 api key"
+- "llama cpp api"
+- "mistral 7b api"
+- "mixtral api"
+- "run llama api"
+- "host llama api"
+- "llm api llama"
+- "gguf api"
+- "ollama api"
+- "ollama api key"
+- "run ollama online"
+- "phi api free"
+- "gemma api free" (non-google hosted)
+- "qwen api free"
+- "yi api free"
+
+========================================================
+BLOCK - API KEY RETRIEVAL PATTERNS
+========================================================
+BLOCK if URL or search matches these patterns
+(outside of approved providers):
+
+- any URL containing "/api-keys" on non-approved AI sites
+- any URL containing "/settings/tokens" on non-approved AI sites
+- any URL containing "/console" on non-approved AI sites
+- "get api key" + any non-approved AI provider name
+- "generate api key" + any non-approved AI provider name
+- "create api key" + any non-approved AI provider name
+
+========================================================
+COMPARISON / DISCOVERY SEARCHES (BLOCK)
+========================================================
+These searches are commonly used to find new AI APIs:
+
+- "best ai apis 2024"
+- "best ai apis 2025"
+- "top llm apis"
+- "free gpt alternatives"
+- "openai alternatives"
+- "claude alternatives"
+- "list of ai apis"
+- "ai api comparison"
+- "cheapest llm api"
+- "fastest llm api"
+- "llm api leaderboard"
+- "open source llm hosting"
+- "self host llm api"
+- "llm as a service"
+- "llm inference api"
+
+========================================================
+SAFE - NON-AI APIS (NEVER BLOCK THESE)
+========================================================
+These are normal developer APIs with no LLM connection:
+
+- openweathermap.org
+- weatherapi.com
+- stripe.com
+- paypal.com
+- twilio.com
+- sendgrid.com
+- mapbox.com
+- googlemaps (non-AI)
+- firebase.google.com
+- supabase.com
+- planetscale.com
+- rapidapi.com
+- postman.com
+- newsapi.org
+- spoonacular.com
+- themoviedb.org
+- spotify developer api
+- twitter/x developer api
+- github api
+- any REST API unrelated to AI/LLM
+
+RULE: If the API's PRIMARY purpose is NOT
+AI text/chat/story generation → SAFE.
+
+========================================================
+FINAL RULE
+========================================================
+If the site or search is AI-related AND not explicitly
+OpenAI, Anthropic, or Google AI → BLOCK.
+If there is ANY doubt about whether it leads to
+unrestricted AI text generation → BLOCK.
+========================================================
+
+========================================================
 CRITICAL SCOPE RULE (PREVENTS FALSE POSITIVES)
 ========================================================
 Some inputs are SEARCH-related (search query text, search results page titles/snippets/urls).

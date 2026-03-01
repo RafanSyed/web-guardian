@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server/ai-server.js",
-    "build": "esbuild src/content.ts src/background.ts src/block.ts --bundle --outdir=dist --format=esm",
+    "build": "esbuild src/content.ts src/background.ts src/block.ts src/popup.ts --bundle --outdir=dist --format=esm",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
